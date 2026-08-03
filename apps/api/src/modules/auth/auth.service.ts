@@ -64,3 +64,7 @@ export async function getCurrentUser(userId: string) {
     createdAt: user.createdAt,
   };
 }
+
+export async function logoutUser() {
+  return;
+}

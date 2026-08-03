@@ -47,3 +47,16 @@ export async function me(req: Request, res: Response) {
     data: user,
   });
 }
+
+export async function logout(req: Request, res: Response) {
+  res.clearCookie("accessToken", {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
+
+  res.json({
+    success: true,
+    message: "Logged out successfully",
+  });
+}
