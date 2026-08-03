@@ -1,3 +1,4 @@
+import { CreateBookDto, UpdateBookDto } from "@repo/schemas";
 import { HTTP_STATUS } from "../../constants/http-status";
 import { AppError } from "../../utils/app-error";
 import { BookStatus } from "./book.model";
@@ -11,7 +12,7 @@ import {
   updateBook,
 } from "./book.repository";
 
-import { CreateBookDto, UpdateBookDto } from "./book.validation";
+
 
 export async function createBookService(userId: string, data: CreateBookDto) {
   return createBook({

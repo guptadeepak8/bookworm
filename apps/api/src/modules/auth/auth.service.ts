@@ -3,7 +3,8 @@ import { createUser, findUserByEmail, findUserById } from "./auth.repository";
 import { AppError } from "../../utils/app-error";
 import { HTTP_STATUS } from "../../constants/http-status";
 import { generateAccessToken } from "../../utils/jwt";
-import { LoginDto } from "./auth.validation";
+import { LoginDto } from "@repo/schemas";
+
 
 export interface CreateUserInput {
   firstName: string;

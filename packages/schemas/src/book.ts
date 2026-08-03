@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { BOOK_STATUS } from "./book.model";
+
+export const BOOK_STATUS = ["want_to_read", "reading", "completed"] as const;
 
 export const createBookSchema = z.object({
   title: z.string().trim().min(1, "Title is required"),
@@ -22,6 +23,8 @@ export const getBooksQuerySchema = z.object({
 export const bookParamsSchema = z.object({
   id: z.string().trim().min(1),
 });
+
+export type BookStatus = (typeof BOOK_STATUS)[number];
 
 export type CreateBookDto = z.infer<typeof createBookSchema>;
 

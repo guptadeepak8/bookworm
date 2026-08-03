@@ -1,11 +1,6 @@
 import { Request, Response } from "express";
 
-import {
-  bookParamsSchema,
-  createBookSchema,
-  getBooksQuerySchema,
-  updateBookSchema,
-} from "./book.validation";
+
 
 import {
   createBookService,
@@ -15,6 +10,7 @@ import {
   getDashboardService,
   updateBookService,
 } from "./book.service";
+import { bookParamsSchema, createBookSchema, getBooksQuerySchema, updateBookSchema } from "@repo/schemas";
 
 export async function createBook(req: Request, res: Response) {
   const body = createBookSchema.parse(req.body);

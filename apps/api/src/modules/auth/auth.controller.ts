@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 
-import { loginSchema, registerSchema } from "./auth.validation";
+
 import { getCurrentUser, loginUser, registerUser } from "./auth.service";
+import { loginSchema, registerSchema } from "@repo/schemas";
 
 export async function register(req: Request, res: Response) {
   const body = registerSchema.parse(req.body);

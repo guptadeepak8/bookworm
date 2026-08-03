@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { BookModel, BookStatus } from "./book.model";
-import { CreateBookDto, UpdateBookDto } from "./book.validation";
+import { CreateBookDto, UpdateBookDto } from "@repo/schemas";
+
 
 interface FindBooksFilters {
   userId: string;
