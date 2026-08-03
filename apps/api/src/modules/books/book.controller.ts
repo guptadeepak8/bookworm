@@ -12,6 +12,7 @@ import {
   deleteBookService,
   getBookByIdService,
   getBooksService,
+  getDashboardService,
   updateBookService,
 } from "./book.service";
 
@@ -75,5 +76,20 @@ export async function deleteBook(req: Request, res: Response) {
   res.json({
     success: true,
     message: "Book deleted successfully",
+  });
+}
+
+
+export async function getDashboard(
+  req: Request,
+  res: Response,
+) {
+  const dashboard = await getDashboardService(
+    req.user!.userId,
+  );
+
+  res.json({
+    success: true,
+    data: dashboard,
   });
 }
