@@ -15,7 +15,7 @@ type FormInputProps<TFieldValues extends FieldValues> = {
   autoComplete?: string;
 };
 
-export function FormInput<TFieldValues extends FieldValues>({
+export function InputField<TFieldValues extends FieldValues>({
   control,
   name,
   label,

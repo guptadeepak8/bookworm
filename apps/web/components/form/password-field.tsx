@@ -15,6 +15,7 @@ type PasswordFieldProps<TFieldValues extends FieldValues> = {
   name: FieldPath<TFieldValues>;
   label: string;
   forgotPasswordHref?: string;
+  autoComplete?: string;
 };
 
 export function PasswordField<TFieldValues extends FieldValues>({
@@ -22,6 +23,7 @@ export function PasswordField<TFieldValues extends FieldValues>({
   name,
   label,
   forgotPasswordHref,
+  autoComplete = "current-password",
 }: PasswordFieldProps<TFieldValues>) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -49,7 +51,7 @@ export function PasswordField<TFieldValues extends FieldValues>({
               {...field}
               id={field.name}
               type={showPassword ? "text" : "password"}
-              autoComplete="current-password"
+              autoComplete={autoComplete}
               error={fieldState.error?.message}
               className="pr-12"
             />

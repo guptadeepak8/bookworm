@@ -1,9 +1,5 @@
 import Link from "next/link";
-
-import { Button } from "../../../components/ui/button";
-import { Field } from "../../../components/ui/field";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
+import { RegisterForm } from "../../../features/auth/components/register-form";
 
 export default function RegisterPage() {
   return (
@@ -14,7 +10,7 @@ export default function RegisterPage() {
       <header className="flex flex-col gap-3">
         <h1
           id="register-heading"
-          className="text-4xl font-bold tracking-tight text-neutral-950"
+          className="text-4xl font-bold tracking-tight"
         >
           Create your account
         </h1>
@@ -24,77 +20,14 @@ export default function RegisterPage() {
         </p>
       </header>
 
-      <form className="mt-12 flex flex-col gap-8">
-        <Field>
-          <Label htmlFor="name">
-            Full Name
-          </Label>
-
-          <Input
-            id="name"
-            name="name"
-            type="text"
-            autoComplete="name"
-            placeholder="John Doe"
-          />
-        </Field>
-
-        <Field>
-          <Label htmlFor="email">
-            Email
-          </Label>
-
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            placeholder="john@example.com"
-          />
-        </Field>
-
-        <Field>
-          <Label htmlFor="password">
-            Password
-          </Label>
-
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            placeholder="Create a password"
-          />
-        </Field>
-
-        <Field>
-          <Label htmlFor="confirmPassword">
-            Confirm Password
-          </Label>
-
-          <Input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-            autoComplete="new-password"
-            placeholder="Confirm your password"
-          />
-        </Field>
-
-        <Button
-          type="submit"
-          className="mt-2"
-        >
-          Create Account
-        </Button>
-      </form>
+      <RegisterForm />
 
       <footer className="mt-12 border-t border-neutral-200 pt-8">
         <p className="text-center text-sm text-neutral-600">
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-semibold text-neutral-950 transition-colors hover:text-neutral-700"
+            className="font-semibold text-neutral-950 hover:text-neutral-700"
           >
             Sign in
           </Link>

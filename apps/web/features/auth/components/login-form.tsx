@@ -10,7 +10,7 @@ import { loginSchema, type LoginDto } from "@repo/schemas";
 import { useLoginMutation } from "../api/auth.mutations";
 
 import { Button } from "../../../components/ui/button";
-import { FormInput } from "../../../components/form/input-field";
+import { InputField } from "../../../components/form/input-field";
 import { PasswordField } from "../../../components/form/password-field";
 
 export function LoginForm() {
@@ -33,7 +33,7 @@ export function LoginForm() {
       onSubmit={form.handleSubmit(onSubmit)}
       className="mt-12 flex flex-col gap-8"
     >
-      <FormInput
+      <InputField
         control={form.control}
         name="email"
         label="Email"
