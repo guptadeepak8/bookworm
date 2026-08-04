@@ -24,8 +24,6 @@ export function LoginForm() {
 
   async function onSubmit(data: LoginDto) {
     await loginMutation.mutateAsync(data);
-
-    router.replace("/dashboard");
   }
 
   return (
