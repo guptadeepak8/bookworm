@@ -8,9 +8,8 @@ import { authKeys } from "./auth.keys";
 export function useMeQuery() {
   return useQuery({
     queryKey: authKeys.me(),
-
     queryFn: me,
-
     retry: false,
+    staleTime: 5 * 60 * 1000,
   });
 }

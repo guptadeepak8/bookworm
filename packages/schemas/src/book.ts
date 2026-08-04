@@ -31,3 +31,27 @@ export type CreateBookDto = z.infer<typeof createBookSchema>;
 export type UpdateBookDto = z.infer<typeof updateBookSchema>;
 
 export type GetBooksQueryDto = z.infer<typeof getBooksQuerySchema>;
+
+export interface Book {
+  id: string;
+  title: string;
+  author: string;
+  tags: string[];
+  status: BookStatus;
+  user: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface DashboardSummary {
+  totalBooks: number;
+  wantToRead: number;
+  reading: number;
+  completed: number;
+}
+
+export interface DashboardResponse {
+  summary: DashboardSummary;
+
+  books: Book[];
+}

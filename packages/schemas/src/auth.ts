@@ -22,3 +22,12 @@ export const loginSchema = z.object({
 export type RegisterDto = z.infer<typeof registerSchema>;
 
 export type LoginDto = z.infer<typeof loginSchema>;
+
+
+export interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  createdAt: string;
+}
