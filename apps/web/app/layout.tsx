@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import "./globals.css";
+import { QueryProvider } from "../providers/query-provider";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -19,8 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} antialiased`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <QueryProvider>
+          {children}
+        </QueryProvider>
+      </body>
     </html>
   );
 }

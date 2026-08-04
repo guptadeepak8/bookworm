@@ -19,12 +19,16 @@ export function Button({
     <button
       disabled={loading || disabled}
       className={cn(
-        `inline-flex items-center justify-center gap-2 h-10 px-4 rounded-lg bg-black text-white text-sm font-medium transition-colors hover:bg-neutral-80 disabled:cursor-not-allowed disabled:opacity-50`,
+        "inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-neutral-950 px-5 text-sm font-medium text-white transition-all",
+        "hover:bg-neutral-800",
+        "active:scale-[0.99]",
+        "disabled:pointer-events-none disabled:opacity-50",
+        "focus-visible:ring-4 focus-visible:ring-neutral-200",
         className,
       )}
       {...props}
     >
-      {loading && <Loader2 className="size-4 animate-spin" />}
+      {loading && <Loader2 className="h-4 w-4 animate-spin" />}
 
       {children}
     </button>

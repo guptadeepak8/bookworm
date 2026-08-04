@@ -15,17 +15,22 @@
 }
 
 html {
-  font-family: var(--font-sans);
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
 
-  background: #ffffff;
+  font-family: var(--font-sans);
+
   color: #171717;
 
+  background:
+    radial-gradient(circle at top, #f8fafc 0%, #ffffff 45%),
+    #ffffff;
+
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -35,6 +40,10 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {

@@ -1,19 +1,17 @@
 import { HTMLAttributes } from "react";
-import { cn } from "../../lib/cn";
 
+import { cn } from "../../lib/cn";
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {}
 
-export function Badge({ children, className, ...props }: BadgeProps) {
+export function Badge({ className, ...props }: BadgeProps) {
   return (
     <span
       className={cn(
-        `inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-700 `,
+        "inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-xs font-medium text-neutral-700",
         className,
       )}
       {...props}
-    >
-      {children}
-    </span>
+    />
   );
 }
