@@ -32,8 +32,22 @@ const bookSchema = new Schema(
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform(_, ret: any) {
+        ret.id = ret._id.toString();
+
+        delete ret._id;
+
+        return ret;
+      },
+    },
   },
 );
+
+
+
 
 export type BookStatus = (typeof BOOK_STATUS)[number];
 

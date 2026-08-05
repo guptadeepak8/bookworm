@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { BOOK_STATUS, type CreateBookDto } from "@repo/schemas";
+import { BOOK_STATUS, type BookStatus, type CreateBookDto } from "@repo/schemas";
 
 import { InputField } from "../../../components/form/input-field";
 import { Button } from "../../../components/ui/button";
@@ -17,6 +17,12 @@ const bookFormSchema = z.object({
 });
 
 type BookFormValues = z.infer<typeof bookFormSchema>;
+
+const STATUS_LABELS: Record<BookStatus, string> = {
+  want_to_read: "Want to Read",
+  reading: "Reading",
+  completed: "Completed",
+};
 
 interface BookFormProps {
   defaultValues?: Partial<BookFormValues>;
@@ -45,6 +51,8 @@ export function BookForm({
       ...defaultValues,
     },
   });
+
+  const currentStatus = form.watch("status");
 
   async function submit(values: BookFormValues) {
     await onSubmit({
@@ -86,21 +94,32 @@ export function BookForm({
       />
 
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Status</label>
+        <label className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-muted">
+          Status
+        </label>
 
-        <select
-          {...form.register("status")}
-          className="h-12 w-full rounded-xl border border-border bg-surface px-4 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
-        >
-          {BOOK_STATUS.map((status) => (
-            <option key={status} value={status}>
-              {status.replaceAll("_", " ")}
-            </option>
-          ))}
-        </select>
+        <div className="flex gap-1 rounded-lg border border-border bg-background p-1">
+          {BOOK_STATUS.map((status) => {
+            const active = status === currentStatus;
+            return (
+              <button
+                key={status}
+                type="button"
+                onClick={() => form.setValue("status", status)}
+                className={`flex-1 rounded-md px-3 py-2 font-mono text-[11px] font-semibold uppercase tracking-wider transition ${
+                  active
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted hover:text-foreground"
+                }`}
+              >
+                {STATUS_LABELS[status]}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      <div className="mt-2 flex justify-end gap-3 border-t border-border pt-6">
+      <div className="mt-2 flex justify-end gap-3 border-t border-dashed border-border pt-6">
         {onCancel && (
           <Button
             type="button"

@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
+
 @theme inline {
   --font-sans: var(--font-geist);
+  --font-serif: "Fraunces", serif;
+  --font-mono: "JetBrains Mono", monospace;
 
   /* Colors */
   --color-background: var(--background);
@@ -34,7 +37,6 @@
   --surface: #ffffff;
   --surface-secondary: #fcf8f4;
 
-  /* Better contrast */
   --foreground: #231a12;
   --muted: #5d5248;
 
@@ -88,10 +90,7 @@
 
 html {
   scroll-behavior: smooth;
-
   font-family: var(--font-sans);
-
-  /* Bigger base font */
   font-size: 16px;
 }
 
@@ -99,14 +98,11 @@ body {
   min-height: 100vh;
 
   background:
-    radial-gradient(circle at top right,
-      rgba(107,68,35,.05),
-      transparent 35%),
+    radial-gradient(circle at top right, rgba(107,68,35,.05), transparent 35%),
     var(--background);
 
   color: var(--foreground);
 
-  /* Typography improvements */
   font-size: 1rem;
   line-height: 1.65;
   font-weight: 450;
@@ -118,7 +114,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Better heading rendering */
+/* Serif display face resets tracking — Fraunces is tight by design */
+.font-serif {
+  letter-spacing: 0;
+}
+
 h1,
 h2,
 h3,
@@ -185,15 +185,11 @@ textarea,
 select {
   background: var(--surface);
   color: var(--foreground);
-
   padding: 0.75rem 1rem;
-
   border: 1px solid var(--border);
   border-radius: 14px;
-
   font-size: 1rem;
   line-height: 1.5;
-
   transition: all .2s ease;
 }
 
@@ -207,11 +203,8 @@ input:focus,
 textarea:focus,
 select:focus {
   border-color: var(--primary);
-
   outline: none;
-
-  box-shadow:
-    0 0 0 4px rgba(107,68,35,.12);
+  box-shadow: 0 0 0 4px rgba(107,68,35,.12);
 }
 
 :focus-visible {

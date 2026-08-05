@@ -11,13 +11,10 @@ interface BooksGridProps {
 
   onDelete(book: Book): void;
 }
-export function BooksGrid({
-  books,
-  onEdit,
-  onDelete,
-}: BooksGridProps) {
+
+export function BooksGrid({ books, onEdit, onDelete }: BooksGridProps) {
   return (
-    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {books.map((book) => (
         <BookCard
           key={book.id}

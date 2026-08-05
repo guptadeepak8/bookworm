@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import { BookModel, BookStatus } from "./book.model";
 import { CreateBookDto, UpdateBookDto } from "@repo/schemas";
 
-
 interface FindBooksFilters {
   userId: string;
   status?: BookStatus;
@@ -15,29 +14,33 @@ export async function createBook(data: CreateBookDto & { user: string }) {
 
 export async function findBooks({ userId, status, tag }: FindBooksFilters) {
   const filter: {
-    user: string;
-    status?: BookStatus;
-    tags?: { $in: string[] };
-  } = {
-    user: userId,
+  user: string;
+  status?: BookStatus;
+  tags?: {
+    $regex: RegExp;
   };
+} = {
+  user: userId,
+};
 
-  if (status) {
-    filter.status = status;
-  }
+if (status) {
+  filter.status = status;
+}
 
-  if (tag) {
-    filter.tags = { $in: [tag] };
-  }
+if (tag) {
+  filter.tags = {
+    $regex: new RegExp(tag, "i"),
+  };
+}
 
-  return BookModel.find(filter).sort({ createdAt: -1 }).lean();
+  return BookModel.find(filter).sort({ createdAt: -1 });
 }
 
 export async function findBookById(id: string, userId: string) {
   return BookModel.findOne({
     _id: id,
     user: userId,
-  }).lean();
+  });
 }
 
 export async function updateBook(
@@ -55,14 +58,14 @@ export async function updateBook(
       new: true,
       runValidators: true,
     },
-  ).lean();
+  );
 }
 
 export async function deleteBook(id: string, userId: string) {
   return BookModel.findOneAndDelete({
     _id: id,
     user: userId,
-  }).lean();
+  });
 }
 
 export async function getDashboard(userId: string) {

@@ -49,7 +49,7 @@ export async function updateBook(
   book: UpdateBookDto,
 ) {
   const { data } =
-    await api.put<ApiResponse<Book>>(
+    await api.patch<ApiResponse<Book>>(
       `/books/${id}`,
       book,
     );

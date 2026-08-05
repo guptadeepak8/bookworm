@@ -1,9 +1,6 @@
 "use client";
 
-import type {
-  Book,
-  CreateBookDto,
-} from "@repo/schemas";
+import type { Book, CreateBookDto } from "@repo/schemas";
 
 import { BookForm } from "./book-form";
 import { Modal } from "../../../components/ui/modal";
@@ -22,19 +19,14 @@ interface BookDialogProps {
   book?: Book;
 }
 
-export function BookDialog({
-  open,
-  onClose,
-  mode,
-  book,
-}: BookDialogProps) {
+export function BookDialog({ open, onClose, mode, book }: BookDialogProps) {
+ console.log("BookDialog", book);
+console.log("BookDialog _id", book?.id);
+console.log("BookDialog id", (book as any)?.id);
   const createBook = useCreateBookMutation();
-
   const updateBook = useUpdateBookMutation();
 
-  async function handleSubmit(
-    data: CreateBookDto,
-  ) {
+  async function handleSubmit(data: CreateBookDto) {
     if (mode === "create") {
       await createBook.mutateAsync(data);
     } else {
@@ -53,11 +45,7 @@ export function BookDialog({
     <Modal
       open={open}
       onClose={onClose}
-      title={
-        mode === "create"
-          ? "Add Book"
-          : "Edit Book"
-      }
+      title={mode === "create" ? "Add Book" : "Edit Book"}
       description={
         mode === "create"
           ? "Add a new book to your library."
@@ -73,15 +61,8 @@ export function BookDialog({
             status: book.status,
           }
         }
-        loading={
-          createBook.isPending ||
-          updateBook.isPending
-        }
-        submitLabel={
-          mode === "create"
-            ? "Add Book"
-            : "Save Changes"
-        }
+        loading={createBook.isPending || updateBook.isPending}
+        submitLabel={mode === "create" ? "Add Book" : "Save Changes"}
         onCancel={onClose}
         onSubmit={handleSubmit}
       />

@@ -43,6 +43,25 @@ export interface Book {
   updatedAt: string;
 }
 
+export interface DashboardBook {
+  _id: string;
+
+  title: string;
+
+  author: string;
+
+  tags: string[];
+
+  status: BookStatus;
+
+  user: string;
+
+  createdAt: string;
+
+  updatedAt: string;
+}
+
+
 export interface DashboardSummary {
   totalBooks: number;
   wantToRead: number;
@@ -53,5 +72,5 @@ export interface DashboardSummary {
 export interface DashboardResponse {
   summary: DashboardSummary;
 
-  books: Book[];
+  books: DashboardBook[];
 }

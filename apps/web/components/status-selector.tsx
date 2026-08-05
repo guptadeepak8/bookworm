@@ -1,33 +1,53 @@
 "use client";
 
-import { BOOK_STATUS, type BookStatus } from "@repo/schemas";
+import type { BookStatus } from "@repo/schemas";
 
-interface Props {
+const STATUS = [
+  {
+    label: "Want",
+    value: "want_to_read",
+  },
+  {
+    label: "Reading",
+    value: "reading",
+  },
+  {
+    label: "Done",
+    value: "completed",
+  },
+] as const;
+
+interface StatusSelectorProps {
   value: BookStatus;
+
+  disabled?: boolean;
+
   onChange(status: BookStatus): void;
 }
 
 export function StatusSelector({
   value,
+  disabled = false,
   onChange,
-}: Props) {
+}: StatusSelectorProps) {
   return (
-    <div className="flex rounded-2xl bg-background p-1">
-      {BOOK_STATUS.map((status) => {
-        const active = value === status;
+    <div className="flex shrink-0 gap-1 rounded-lg border border-border bg-background p-1">
+      {STATUS.map((status) => {
+        const active = status.value === value;
 
         return (
           <button
-            key={status}
+            key={status.value}
             type="button"
-            onClick={() => onChange(status)}
-            className={`flex-1 rounded-xl px-3 py-2 text-sm font-medium capitalize transition ${
+            disabled={disabled}
+            onClick={() => onChange(status.value)}
+            className={`rounded-md px-3 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-wider transition disabled:pointer-events-none disabled:opacity-50 ${
               active
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "text-muted hover:bg-surface"
+                ? "bg-primary text-primary-foreground"
+                : "text-muted hover:text-foreground"
             }`}
           >
-            {status.replaceAll("_", " ")}
+            {status.label}
           </button>
         );
       })}

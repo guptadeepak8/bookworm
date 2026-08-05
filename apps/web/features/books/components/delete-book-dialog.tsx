@@ -20,13 +20,11 @@ export function DeleteBookDialog({
   title,
   onClose,
 }: DeleteBookDialogProps) {
-  const deleteMutation =
-    useDeleteBookMutation();
+  const deleteMutation = useDeleteBookMutation();
 
   async function handleDelete() {
     try {
       await deleteMutation.mutateAsync(id);
-
       onClose();
     } catch (error) {
       console.error(error);
@@ -43,21 +41,25 @@ export function DeleteBookDialog({
     >
       <div className="flex flex-col gap-8">
         <div className="flex flex-col items-center text-center">
-          <div className="grid h-20 w-20 place-items-center rounded-full bg-danger/10 text-danger">
-            <Trash2 size={36} />
+          <div className="grid h-16 w-16 place-items-center rounded-full bg-danger/10 text-danger">
+            <Trash2 size={30} />
           </div>
 
-          <h3 className="mt-6 text-xl font-bold">
-            Delete "{title}"?
+          <p className="mt-5 font-mono text-xs font-medium uppercase tracking-[0.15em] text-muted">
+            Confirm Removal
+          </p>
+
+          <h3 className="mt-2 font-serif text-2xl font-semibold">
+            Delete “{title}”?
           </h3>
 
           <p className="mt-3 max-w-sm text-sm text-muted">
-            This will permanently remove this book from your
-            library. This action cannot be undone.
+            This will permanently remove this book from your library. This
+            action cannot be undone.
           </p>
         </div>
 
-        <div className="flex justify-end gap-3 border-t border-border pt-6">
+        <div className="flex justify-end gap-3 border-t border-dashed border-border pt-6">
           <Button
             type="button"
             onClick={onClose}
