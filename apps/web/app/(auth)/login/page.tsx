@@ -12,24 +12,24 @@ export default function LoginPage() {
       <header className="flex flex-col gap-3">
         <h1
           id="login-heading"
-          className="text-4xl font-bold tracking-tight text-neutral-950"
+          className="text-4xl font-bold tracking-tight text-foreground"
         >
           Welcome back
         </h1>
 
-        <p className="max-w-sm text-base leading-7 text-neutral-600">
+        <p className="max-w-sm text-base leading-7 text-muted">
           Sign in to continue managing your reading collection.
         </p>
       </header>
 
       <LoginForm />
 
-      <footer className="mt-12 border-t border-neutral-200 pt-8">
-        <p className="text-center text-sm text-neutral-600">
+      <footer className="mt-12 border-t border-border pt-8">
+        <p className="text-center text-sm text-muted">
           Don't have an account?{" "}
           <Link
             href="/register"
-            className="font-semibold text-neutral-950 transition-colors hover:text-neutral-700"
+            className="font-semibold text-primary transition-colors hover:brightness-90"
           >
             Create one
           </Link>

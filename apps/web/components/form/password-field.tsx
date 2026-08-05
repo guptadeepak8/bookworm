@@ -39,7 +39,7 @@ export function PasswordField<TFieldValues extends FieldValues>({
             {forgotPasswordHref && (
               <Link
                 href={forgotPasswordHref}
-                className="text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-900"
+                className="text-sm font-medium text-muted transition-colors hover:text-foreground"
               >
                 Forgot password?
               </Link>
@@ -60,7 +60,7 @@ export function PasswordField<TFieldValues extends FieldValues>({
               type="button"
               aria-label={showPassword ? "Hide password" : "Show password"}
               onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 transition-colors hover:text-neutral-900"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted transition-colors hover:text-foreground"
             >
               {showPassword ? (
                 <EyeOff className="size-5" />

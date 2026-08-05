@@ -10,24 +10,24 @@ export default function RegisterPage() {
       <header className="flex flex-col gap-3">
         <h1
           id="register-heading"
-          className="text-4xl font-bold tracking-tight"
+          className="text-4xl font-bold tracking-tight text-foreground"
         >
           Create your account
         </h1>
 
-        <p className="max-w-sm text-base leading-7 text-neutral-600">
+        <p className="max-w-sm text-base leading-7 text-muted">
           Start building your personal reading library today.
         </p>
       </header>
 
       <RegisterForm />
 
-      <footer className="mt-12 border-t border-neutral-200 pt-8">
-        <p className="text-center text-sm text-neutral-600">
+      <footer className="mt-12 border-t border-border pt-8">
+        <p className="text-center text-sm text-muted">
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-semibold text-neutral-950 hover:text-neutral-700"
+            className="font-semibold text-primary hover:brightness-90"
           >
             Sign in
           </Link>

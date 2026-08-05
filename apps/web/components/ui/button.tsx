@@ -19,11 +19,11 @@ export function Button({
     <button
       disabled={loading || disabled}
       className={cn(
-        "inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-neutral-950 px-5 text-sm font-medium text-white transition-all",
-        "hover:bg-neutral-800",
+        "inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-sm)] transition-all",
+        "hover:brightness-95",
         "active:scale-[0.99]",
         "disabled:pointer-events-none disabled:opacity-50",
-        "focus-visible:ring-4 focus-visible:ring-neutral-200",
+        "focus-visible:ring-4 focus-visible:ring-primary/15",
         className,
       )}
       {...props}
