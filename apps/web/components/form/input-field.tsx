@@ -28,7 +28,7 @@ export function InputField<TFieldValues extends FieldValues>({
       control={control}
       name={name}
       render={({ field, fieldState }) => (
-        <Field>
+        <Field error={fieldState.error?.message}>
           <Label htmlFor={field.name}>{label}</Label>
 
           <Input
@@ -37,7 +37,6 @@ export function InputField<TFieldValues extends FieldValues>({
             type={type}
             placeholder={placeholder}
             autoComplete={autoComplete}
-            error={fieldState.error?.message}
           />
         </Field>
       )}

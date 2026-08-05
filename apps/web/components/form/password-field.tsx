@@ -32,7 +32,7 @@ export function PasswordField<TFieldValues extends FieldValues>({
       control={control}
       name={name}
       render={({ field, fieldState }) => (
-        <Field>
+        <Field  error={fieldState.error?.message}>
           <div className="flex items-center justify-between">
             <Label htmlFor={field.name}>{label}</Label>
 
@@ -52,7 +52,7 @@ export function PasswordField<TFieldValues extends FieldValues>({
               id={field.name}
               type={showPassword ? "text" : "password"}
               autoComplete={autoComplete}
-              error={fieldState.error?.message}
+             
               className="pr-12"
             />
 

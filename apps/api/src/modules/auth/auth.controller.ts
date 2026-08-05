@@ -30,7 +30,7 @@ export async function login(req: Request, res: Response) {
   res.cookie("accessToken", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000,
   });
 
@@ -52,7 +52,7 @@ export async function me(req: Request, res: Response) {
 export async function logout(req: Request, res: Response) {
   res.clearCookie("accessToken", {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: "none",
     secure: process.env.NODE_ENV === "production",
   });
 
