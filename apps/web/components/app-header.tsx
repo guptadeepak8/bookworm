@@ -1,6 +1,11 @@
+"use client"
 import { Bell, Plus, Search } from "lucide-react";
+import { useState } from "react";
+import { BookDialog } from "../features/books/components/book-dialog";
 
 export function AppHeader() {
+
+  const [open, setOpen] = useState(false);
   return (
     <header className="flex h-20 items-center justify-between px-8">
       <div className="flex flex-1 items-center gap-6">
@@ -31,6 +36,8 @@ export function AppHeader() {
           Add Book
         </button>
 
+
+
         <button
           className="
           grid h-11 w-11 place-items-center
@@ -52,6 +59,11 @@ export function AppHeader() {
           D
         </div>
       </div>
+      <BookDialog
+    open={open}
+    mode="create"
+    onClose={() => setOpen(false)}
+/>
     </header>
   );
 }

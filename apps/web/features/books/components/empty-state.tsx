@@ -1,21 +1,34 @@
-import Link from "next/link";
+"use client";
 
+import { Button } from "../../../components/ui/button";
 
-export function EmptyState() {
+interface EmptyStateProps {
+  onAddBook(): void;
+}
+
+export function EmptyState({
+  onAddBook,
+}: EmptyStateProps) {
   return (
-    <section className="flex flex-col items-center rounded-2xl border border-dashed border-neutral-300 py-20 text-center">
-      <h2 className="text-2xl font-semibold">No books yet</h2>
+    <section className="flex flex-col items-center rounded-[32px] border border-dashed border-border bg-surface px-8 py-24 text-center">
+      <div className="grid h-20 w-20 place-items-center rounded-full bg-primary/10 text-4xl">
+        📚
+      </div>
 
-      <p className="mt-3 max-w-sm text-neutral-600">
+      <h2 className="mt-8 text-3xl font-bold">
+        No books yet
+      </h2>
+
+      <p className="mt-3 max-w-md text-muted">
         Start building your personal library by adding your first book.
       </p>
 
-      <Link
-        href="/books/new"
-        className="inline-flex h-10 items-center justify-center rounded-lg bg-black px-4 text-sm font-medium text-white"
+      <Button
+        className="mt-8"
+        onClick={onAddBook}
       >
         Add Book
-      </Link>
+      </Button>
     </section>
   );
 }

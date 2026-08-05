@@ -21,7 +21,6 @@
   --color-danger: var(--danger);
 
   /* Radius */
-
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -33,12 +32,13 @@
 
   --background: #f7f3ee;
   --surface: #ffffff;
-  --surface-secondary: #fdf8f3;
+  --surface-secondary: #fcf8f4;
 
-  --foreground: #2b2118;
-  --muted: #75675c;
+  /* Better contrast */
+  --foreground: #231a12;
+  --muted: #5d5248;
 
-  --border: #e7ddd2;
+  --border: #e5dbcf;
 
   --primary: #6b4423;
   --primary-foreground: #ffffff;
@@ -47,11 +47,9 @@
   --warning: #c48b37;
   --danger: #b24b4b;
 
-  --shadow-sm: 0 2px 10px rgba(58, 44, 29, .04);
-
-  --shadow-md: 0 10px 30px rgba(58, 44, 29, .08);
-
-  --shadow-lg: 0 20px 60px rgba(58, 44, 29, .12);
+  --shadow-sm: 0 2px 10px rgba(58, 44, 29, .05);
+  --shadow-md: 0 12px 30px rgba(58, 44, 29, .08);
+  --shadow-lg: 0 24px 60px rgba(58, 44, 29, .12);
 }
 
 .dark {
@@ -59,12 +57,12 @@
 
   --background: #181412;
   --surface: #221c18;
-  --surface-secondary: #2b241f;
+  --surface-secondary: #2c2520;
 
-  --foreground: #f6efe7;
-  --muted: #b5a89d;
+  --foreground: #faf5ef;
+  --muted: #c4b8ac;
 
-  --border: #3b322d;
+  --border: #3c332e;
 
   --primary: #d6b48d;
   --primary-foreground: #181412;
@@ -73,10 +71,8 @@
   --warning: #f1b44c;
   --danger: #f07c7c;
 
-  --shadow-sm: 0 2px 10px rgba(0,0,0,.2);
-
+  --shadow-sm: 0 2px 10px rgba(0,0,0,.25);
   --shadow-md: 0 12px 32px rgba(0,0,0,.35);
-
   --shadow-lg: 0 24px 64px rgba(0,0,0,.45);
 }
 
@@ -92,7 +88,11 @@
 
 html {
   scroll-behavior: smooth;
+
   font-family: var(--font-sans);
+
+  /* Bigger base font */
+  font-size: 16px;
 }
 
 body {
@@ -106,10 +106,56 @@ body {
 
   color: var(--foreground);
 
+  /* Typography improvements */
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 450;
+  letter-spacing: -0.015em;
+
   text-rendering: optimizeLegibility;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Better heading rendering */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--foreground);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+h1 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw, 2.25rem);
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+
+small {
+  font-size: .875rem;
+  color: var(--muted);
 }
 
 button,
@@ -121,6 +167,7 @@ select {
 
 button {
   cursor: pointer;
+  font-weight: 500;
 }
 
 a {
@@ -139,11 +186,21 @@ select {
   background: var(--surface);
   color: var(--foreground);
 
-  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
 
+  border: 1px solid var(--border);
   border-radius: 14px;
 
-  transition: .2s;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  transition: all .2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: .8;
 }
 
 input:focus,
@@ -159,7 +216,6 @@ select:focus {
 
 :focus-visible {
   outline: 2px solid var(--primary);
-
   outline-offset: 3px;
 }
 
