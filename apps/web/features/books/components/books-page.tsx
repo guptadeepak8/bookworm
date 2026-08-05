@@ -9,13 +9,22 @@ import { useBooksQuery } from "../api/books.queries";
 import { BooksGrid } from "./books-grid";
 import { EmptyState } from "./empty-state";
 import { Button } from "../../../components/ui/button";
+import { BookStatus } from "@repo/schemas";
 
-export function BooksPage() {
-  const { data, isPending } = useBooksQuery();
+interface BooksPageProps {
+  status?: BookStatus;
 
-  if (isPending) {
-    return <p>Loading...</p>;
-  }
+  tag?: string;
+}
+
+export function BooksPage({
+  status,
+  tag,
+}: BooksPageProps) {
+  const { data } =
+    useBooksQuery(status, tag);
+
+
 
   if (!data?.length) {
     return <EmptyState />;

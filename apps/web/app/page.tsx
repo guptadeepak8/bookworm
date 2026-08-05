@@ -1,11 +1,14 @@
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
+export default async function HomePage() {
+  const cookieStore = await cookies();
 
-export default function Home() {
- return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1 className="text-5xl font-semibold tracking-tight">
-        Bookworm
-      </h1>
-    </main>
-  );
+  const token = cookieStore.get("accessToken");
+
+  if (token) {
+    redirect("/dashboard");
+  }
+
+  redirect("/login");
 }
