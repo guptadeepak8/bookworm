@@ -20,9 +20,6 @@ interface BookDialogProps {
 }
 
 export function BookDialog({ open, onClose, mode, book }: BookDialogProps) {
- console.log("BookDialog", book);
-console.log("BookDialog _id", book?.id);
-console.log("BookDialog id", (book as any)?.id);
   const createBook = useCreateBookMutation();
   const updateBook = useUpdateBookMutation();
 

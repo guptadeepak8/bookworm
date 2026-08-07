@@ -33,7 +33,7 @@ export function StatCard({ title, value, icon, accent = "primary" }: Props) {
         <span className="absolute -left-2 top-0 h-4 w-4 -translate-y-1/2 rounded-full border border-border bg-background" />
         <span className="absolute -right-2 top-0 h-4 w-4 -translate-y-1/2 rounded-full border border-border bg-background" />
 
-        <p className="font-serif text- font-semibold tabular-nums">
+        <p className="font-serif text-2xl font-semibold tabular-nums">
           {value}
         </p>
       </div>

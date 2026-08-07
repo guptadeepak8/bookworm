@@ -57,7 +57,7 @@ export function BookCard({ book, onEdit, onDelete }: BookCardProps) {
           />
         </div>
 
-        <div className="flex justify-end gap-3 border-t border-border pt-5">
+        <div className="flex justify-end gap-3  border-border pt-5">
           <Button
             type="button"
             onClick={() => onEdit(book)}
