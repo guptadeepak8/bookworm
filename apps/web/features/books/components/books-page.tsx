@@ -13,6 +13,7 @@ import { BookDialog } from "./book-dialog";
 import { BooksGrid } from "./books-grid";
 import { EmptyState } from "./empty-state";
 import { DeleteBookDialog } from "./delete-book-dialog";
+import { BooksGridSkeleton } from "./books-grid-skeleton";
 
 interface BooksPageProps {
   status?: BookStatus;
@@ -58,9 +59,6 @@ export function BooksPage({ status, tag }: BooksPageProps) {
     setTagFilter("");
   }
 
-  if (isPending) {
-    return <p className="text-muted">Loading library...</p>;
-  }
 
   const isEmptyLibrary = !data?.length && !hasActiveFilters;
 
@@ -143,22 +141,25 @@ export function BooksPage({ status, tag }: BooksPageProps) {
           </div>
         </div>
 
-        {data?.length ? (
-          <BooksGrid
-            books={data}
-            onEdit={(book) => setSelectedBook(book)}
-            onDelete={(book) => setDeleteBook(book)}
-          />
-        ) : (
-          <div className="rounded-2xl border border-dashed border-border py-16 text-center">
-            <p className="font-serif text-xl font-semibold">
-              No books match these filters
-            </p>
-            <p className="mt-2 text-sm text-muted">
-              Try a different status or tag.
-            </p>
-          </div>
-        )}
+       {isPending ? (
+  <BooksGridSkeleton />
+) : data?.length ? (
+  <BooksGrid
+    books={data}
+    onEdit={(book) => setSelectedBook(book)}
+    onDelete={(book) => setDeleteBook(book)}
+  />
+) : (
+  <div className="rounded-2xl border border-dashed border-border py-16 text-center">
+    <p className="font-serif text-xl font-semibold">
+      No books match these filters
+    </p>
+
+    <p className="mt-2 text-sm text-muted">
+      Try a different status or tag.
+    </p>
+  </div>
+)}
       </section>
 
       <BookDialog
