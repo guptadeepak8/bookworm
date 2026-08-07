@@ -22,8 +22,8 @@ export function LoginForm() {
   const form = useForm<LoginDto>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-    email: "",
-    password: "",
+    email: "test@test.com",
+    password: "123456",
   },
   });
 
@@ -65,6 +65,10 @@ export function LoginForm() {
   </p>
 )}
 
+<p className="text-center text-sm text-muted">
+  Note: The server may take 30–60 seconds to wake up on the first request. Thank
+  you for your patience.
+</p>
 
       <Button loading={loginMutation.isPending}>Sign In</Button>
     </form>
