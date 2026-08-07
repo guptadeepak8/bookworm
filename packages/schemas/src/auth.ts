@@ -13,10 +13,22 @@ export const registerSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-export const loginSchema = z.object({
-  email: z.email().trim().toLowerCase(),
+const loginSchema = z.object({
+  email: z
+    .string({
+      error: (issue) =>
+        issue.input === undefined || issue.input === ""
+          ? "Email is required"
+          : "Email must be a string",
+    })
+    .trim()
+    .pipe(z.email("Please enter a valid email address")),
 
-  password: z.string().min(1),
+  password: z
+    .string({
+      error: "Password is required",
+    })
+    .min(1, "Password is required"),
 });
 
 export type RegisterDto = z.infer<typeof registerSchema>;

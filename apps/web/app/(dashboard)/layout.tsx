@@ -6,17 +6,17 @@ interface DashboardLayoutProps {
   children: ReactNode;
 }
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default function DashboardLayout({
+  children,
+}: DashboardLayoutProps) {
   return (
-    <div className="grid min-h-screen bg-background lg:grid-cols-[270px_1fr]">
-      <aside className="border-r border-border bg-surface">
-        <AppNavigation />
-      </aside>
+    <div className="flex h-screen bg-background">
+      <AppNavigation />
 
-      <div className="flex min-h-screen flex-col">
+      <div className="flex flex-1 flex-col overflow-hidden">
         <AppHeader />
 
-        <main className="flex-1">
+        <main className="flex-1 overflow-y-auto">
           <div className="mx-auto w-full max-w-7xl px-8 py-8 xl:px-12">
             {children}
           </div>

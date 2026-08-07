@@ -148,9 +148,8 @@ h4 {
 }
 
 p {
-  font-size: 1rem;
+
   line-height: 1.75;
-  color: var(--foreground);
 }
 
 small {

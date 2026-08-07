@@ -1,6 +1,6 @@
 export function DashboardHeader() {
   return (
-    <header className="flex flex-col gap-6 border-b border-border pb-8 md:flex-row md:items-end md:justify-between">
+    <header className="flex flex-col gap-6  pb-8 md:flex-row md:items-end md:justify-between">
       <div className="space-y-2">
         <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-muted">
           Overview

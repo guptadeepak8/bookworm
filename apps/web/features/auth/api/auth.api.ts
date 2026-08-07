@@ -21,6 +21,5 @@ export async function me() {
 
 export async function logout() {
   const response = await api.post<ApiResponse<null>>("/auth/logout");
-
   return response.data;
 }

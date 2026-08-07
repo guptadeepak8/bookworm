@@ -15,7 +15,6 @@ const STATUS = [
 ] as const;
 
 export function RecentBooks({ books }: RecentBooksProps) {
-  console.log(books);
   const updateBookMutation = useUpdateBookMutation();
   function updateStatus(id: string, status: BookStatus) {
     updateBookMutation.mutate({

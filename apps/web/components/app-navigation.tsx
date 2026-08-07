@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Book, ChartColumn, LogOut } from "lucide-react";
-import { logout } from "../features/auth";
+import { logout, useLogoutMutation } from "../features/auth";
 
 const items = [
   {
@@ -21,7 +21,7 @@ const items = [
 
 export function AppNavigation() {
   const pathname = usePathname();
-
+    const logoutMutation = useLogoutMutation();
   return (
     <aside className="flex h-screen flex-col">
       <div className="border-b border-border p-8">
@@ -73,7 +73,7 @@ export function AppNavigation() {
         })}
       </nav>
 
-      <div className="border-t border-dashed border-border p-6"  onClick={logout}>
+      <div className="border-t border-dashed border-border p-6"    onClick={() => logoutMutation.mutate()}>
         <button
           className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-mono text-xs font-semibold uppercase tracking-wider text-muted transition hover:bg-surface-secondary hover:text-foreground"
          

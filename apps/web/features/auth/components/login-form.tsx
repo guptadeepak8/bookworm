@@ -12,6 +12,7 @@ import { useLoginMutation } from "../api/auth.mutations";
 import { Button } from "../../../components/ui/button";
 import { InputField } from "../../../components/form/input-field";
 import { PasswordField } from "../../../components/form/password-field";
+import { Field } from "../../../components/ui/field";
 
 export function LoginForm() {
   const router = useRouter();
@@ -20,12 +21,24 @@ export function LoginForm() {
 
   const form = useForm<LoginDto>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+    email: "",
+    password: "",
+  },
   });
 
   async function onSubmit(data: LoginDto) {
+  try {
     await loginMutation.mutateAsync(data);
+  } catch (error) {
+    form.setError("root", {
+      message:
+        error instanceof Error
+          ? error.message
+          : "Something went wrong",
+    });
   }
-
+}
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
@@ -46,6 +59,12 @@ export function LoginForm() {
         label="Password"
         forgotPasswordHref="/forgot-password"
       />
+        {form.formState.errors.root && (
+  <p className="text-sm text-danger">
+    {form.formState.errors.root.message}
+  </p>
+)}
+
 
       <Button loading={loginMutation.isPending}>Sign In</Button>
     </form>

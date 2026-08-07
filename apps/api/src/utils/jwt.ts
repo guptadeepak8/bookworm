@@ -7,7 +7,6 @@ interface JwtPayload {
 }
 
 export function generateAccessToken(payload: JwtPayload) {
-    console.log(JWT_SECRET)
   return jwt.sign(payload, JWT_SECRET, {
     expiresIn: "1d",
   });

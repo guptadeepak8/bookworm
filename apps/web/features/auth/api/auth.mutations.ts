@@ -63,8 +63,7 @@ export function useLogoutMutation() {
       queryClient.removeQueries({
         queryKey: authKeys.me(),
       });
-
-      router.replace("/login");
+  router.replace("/login");
     },
   });
 }

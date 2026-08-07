@@ -81,23 +81,18 @@ export function BooksPage({ status, tag }: BooksPageProps) {
   return (
     <>
       <section className="space-y-8">
-        <header className="flex flex-col gap-6 border-b border-border pb-8 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-2">
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-muted">
-              Library
-            </p>
+       <header className="flex items-center justify-between gap-6 border-b border-border pb-8">
+  <div className="space-y-2">
+    <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-muted">
+      Library
+    </p>
 
-            <h1 className="font-serif text-5xl font-semibold tracking-tight">
-              Books
-            </h1>
+    <h1 className="font-serif text-5xl font-semibold tracking-tight">
+      Books
+    </h1>
+  </div>
 
-            <p className="max-w-xl text-base leading-7 text-muted">
-              Organize, update and manage every book in your collection.
-            </p>
-          </div>
-
-          <Button onClick={() => setCreateOpen(true)}>Add Book</Button>
-        </header>
+</header>
 
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-3">
